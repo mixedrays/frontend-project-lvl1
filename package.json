@@ -26,5 +26,8 @@
   "homepage": "https://github.com/mixedrays/frontend-project-lvl1#readme",
   "devDependencies": {
     "prettier": "^2.8.0"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.10"
   }
 }
