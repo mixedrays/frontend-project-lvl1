@@ -10,6 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/mixedrays/frontend-project-lvl1.git"
   },
+  "type": "module",
   "keywords": [
     "hexlet",
     "project"
