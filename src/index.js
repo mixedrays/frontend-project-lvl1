@@ -1,11 +1,13 @@
-import askName from './cli.js';
+import { showGreetings, askName } from './cli.js';
 
 // eslint-disable-next-line max-len
 export const getRandomNumber = (min = 0, max = 100) => Math.floor(Math.random() * (max - min + 1) + min);
 
 export const isEven = (number) => number % 2 === 0;
 
-export const game = (showRules, askQuestion) => {
+export const runGame = (showRules, askQuestion) => {
+  showGreetings();
+
   const name = askName();
 
   showRules();
