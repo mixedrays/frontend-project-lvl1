@@ -12,8 +12,9 @@ export const gameRound = () => {
     .map((_, index) => progressionFirst + index * progressionStep);
   const hiddenNumber = progression[hiddenPosition];
   progression[hiddenPosition] = '..';
+  const question = progression.reduce((acc, element) => `${acc} ${element}`, '');
 
-  showQuestion(JSON.stringify(progression));
+  showQuestion(question);
 
   const userAnswer = askForUserAnswer();
   const correctAnswer = String(hiddenNumber);
