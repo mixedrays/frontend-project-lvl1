@@ -1,19 +1,13 @@
-import readlineSync from 'readline-sync';
 import { getRandomNumber } from '../index.js';
+import { askForUserAnswer, showQuestion } from '../cli.js';
 
-export const showRules = () => {
-  console.log('What is the result of the expression?');
-};
+export const gameRules = 'What is the result of the expression?';
 
-export const askQuestion = (name) => {
+export const gameRound = () => {
   const operands = ['+', '-', '*'];
   const number1 = getRandomNumber();
   const number2 = getRandomNumber();
   const operand = operands[getRandomNumber(0, 2)];
-
-  console.log('Question: ', `${number1} ${operand} ${number2}`);
-  const answer = readlineSync.question('Your answer: ');
-
   const calcAnswer = () => {
     switch (operand) {
       case '+':
@@ -27,13 +21,10 @@ export const askQuestion = (name) => {
     }
   };
 
-  const correctAnswer = calcAnswer();
+  showQuestion(`${number1} ${operand} ${number2}`);
 
-  if (String(answer) === String(correctAnswer)) {
-    console.log('Correct!');
-    return true;
-  }
+  const userAnswer = askForUserAnswer();
+  const correctAnswer = String(calcAnswer());
 
-  console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswer}.\n Let's try again, ${name}!`);
-  return false;
+  return { userAnswer, correctAnswer };
 };

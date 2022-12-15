@@ -1,4 +1,11 @@
-import { showGreetings, askName } from './cli.js';
+import {
+  showCongrats,
+  showGreetings,
+  askName,
+  showWrong,
+  showCorrect,
+  showRules,
+} from './cli.js';
 
 // eslint-disable-next-line max-len
 export const getRandomNumber = (min = 0, max = 100) => Math.floor(Math.random() * (max - min + 1) + min);
@@ -20,20 +27,25 @@ export const getGCD = (number1, number2) => {
   return n1;
 };
 
-export const runGame = (showRules, askQuestion) => {
+export const runGame = (rules, runRound) => {
   showGreetings();
 
   const name = askName();
 
-  showRules();
+  showRules(rules);
 
   for (let i = 0; i < 3; i += 1) {
-    if (!askQuestion(name)) {
+    const { userAnswer, correctAnswer } = runRound();
+
+    if (userAnswer === correctAnswer) {
+      showCorrect();
+    } else {
+      showWrong(name, userAnswer, correctAnswer);
       return false;
     }
   }
 
-  console.log(`Congratulations, ${name}`);
+  showCongrats(name);
 
   return undefined;
 };

@@ -1,11 +1,9 @@
-import readlineSync from 'readline-sync';
 import { getRandomNumber } from '../index.js';
+import { askForUserAnswer, showQuestion } from '../cli.js';
 
-export const showRules = () => {
-  console.log('What number is missing in the progression?');
-};
+export const gameRules = 'What number is missing in the progression?';
 
-export const askQuestion = (name) => {
+export const gameRound = () => {
   const progressionLength = getRandomNumber(5, 10);
   const progressionStep = getRandomNumber(1, 15);
   const progressionFirst = getRandomNumber(0, 50);
@@ -15,15 +13,10 @@ export const askQuestion = (name) => {
   const hiddenNumber = progression[hiddenPosition];
   progression[hiddenPosition] = '..';
 
-  console.log('Question: ', JSON.stringify(progression));
-  const answer = readlineSync.question('Your answer: ');
+  showQuestion(JSON.stringify(progression));
+
+  const userAnswer = askForUserAnswer();
   const correctAnswer = String(hiddenNumber);
 
-  if (answer === correctAnswer) {
-    console.log('Correct!');
-    return true;
-  }
-
-  console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswer}.\n Let's try again, ${name}!`);
-  return false;
+  return { userAnswer, correctAnswer };
 };
