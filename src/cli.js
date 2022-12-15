@@ -5,7 +5,7 @@ export const showGreetings = () => {
 };
 
 export const showCongrats = (name) => {
-  console.log(`Congratulations, ${name}`);
+  console.log(`Congratulations, ${name}!`);
 };
 
 export const showRules = (rules) => {
@@ -27,7 +27,7 @@ export const showQuestion = (question) => {
 export const askForUserAnswer = () => readlineSync.question('Your answer: ');
 
 export const askName = () => {
-  const name = readlineSync.question('May I have your name? ');
+  const name = readlineSync.question('May I have your name?');
   console.log(`Hello, ${name}!`);
   return name;
 };
