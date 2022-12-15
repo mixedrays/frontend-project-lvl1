@@ -21,7 +21,7 @@ export const showCorrect = () => {
 };
 
 export const showQuestion = (question) => {
-  console.log('Question: ', question);
+  console.log('Question:', question);
 };
 
 export const askForUserAnswer = () => readlineSync.question('Your answer: ');
