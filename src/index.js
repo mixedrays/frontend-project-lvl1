@@ -12,6 +12,14 @@ export const getRandomNumber = (min = 0, max = 100) => Math.floor(Math.random() 
 
 export const isEven = (number) => number % 2 === 0;
 
+export const isPrime = (number) => {
+  for (let i = 2, s = Math.sqrt(number); i <= s; i += 1) {
+    if (number % i === 0) return false;
+  }
+
+  return number > 1;
+};
+
 export const getGCD = (number1, number2) => {
   let n1 = number1;
   let n2 = number2;
